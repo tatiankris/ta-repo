@@ -3,10 +3,12 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import {fromEvent} from "rxjs";
 import {MythParent} from "./React/BigRerendersMyth.tsx";
+import {MythParentMemo} from "./React/BigRerendersMythMemo.tsx";
+import {ResizeDetector} from "./React/hooks/ResizeDetector.tsx";
 
-const Child = ({a}: {a: number}) => {
+const Child = ({a}: { a: number }) => {
     console.log("RenderChild")
-  return <div>Child{a}</div>
+    return <div>Child{a}</div>
 }
 
 function App() {
@@ -26,7 +28,9 @@ function App() {
 			{/*	subscription.unsubscribe()*/}
 			{/*}}>Unsubscribe*/}
 			{/*</button>*/}
+            <ResizeDetector />
             <MythParent />
+            <MythParentMemo />
         </div>
     );
 }

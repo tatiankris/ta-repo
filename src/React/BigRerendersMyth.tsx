@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 const MythChild = ({a}: { a: number }) => {
     console.log("Render-MythChild")
@@ -13,7 +13,7 @@ function MythParent() {
     return (
         <div className="App">
             <h2>Big Rerenders Myth</h2>
-                {/*
+            {/*
                 При клике на кнопку а меняется, что можно отследить в консоли,
                 но при этом никто не ререндерится,
                 хоть а и передается как пропс в MythChild (т.е. пропс меняется, а компонент не перерендеривается)

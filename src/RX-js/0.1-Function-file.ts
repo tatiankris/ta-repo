@@ -10,7 +10,7 @@ const foo = () => {
     return 2
 }
 
-const observable = new Observable((subscriber) => {
+const observable = new Observable<number>((subscriber) => {
     subscriber.next(2)
 })
 

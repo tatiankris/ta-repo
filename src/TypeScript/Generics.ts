@@ -12,7 +12,7 @@ interface Lengthy {
     length: number;
 }
 
-///Дженерик можно зпэкстндить от Interface
+///Дженерик можно заэкстендить от Interface
 function logLength<T extends Lengthy>(item: T): void {
     console.log(item.length);
 }

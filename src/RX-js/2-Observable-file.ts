@@ -16,6 +16,7 @@ const observable = new Observable((subscriber) => {
     }, 1000)
 
     /////Cleanup функция, происходит, при отписке от observable ( при вызове unsubscribe )
+    //// - или при выполнении complete() / error() внутри observable
     return () => {
         clearInterval(id)
         console.log("In cleanup")
