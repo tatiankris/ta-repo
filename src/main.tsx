@@ -4,7 +4,13 @@ import App from "./App.tsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<React.StrictMode>
 		<App />
-	</React.StrictMode>
 );
+
+// console.log("APP Prototype", App.prototype)
+//
+// Promise.resolve().then(() => {
+// 	console.log("APP Prototype", App.prototype)
+// 	// console.log("APP caller", App.caller)
+//
+// })
