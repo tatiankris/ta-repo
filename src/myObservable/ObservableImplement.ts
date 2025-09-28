@@ -1,15 +1,15 @@
 const init = () => {}
-/////
 
 const voidFunction = () => {}
+type VoidFunction = () => void
 
 type TSubscriber<T> = {
     next: (value: T) => void,
     error?: (error: any) => void,
-    complete?: () => void,
+    complete?: VoidFunction,
 }
 
-type TSubscriberFunction<T> = (subscriber: Required<TSubscriber<T>>) => void
+type TSubscriberFunction<T> = (subscriber: Required<TSubscriber<T>>) => VoidFunction | void
 
 class MyObservable<T> {
     private _subscribers = new Map()
@@ -37,20 +37,21 @@ class MyObservable<T> {
         }
 
         const activeSubscriber = this._subscribers.get(subscriberId)
-        this._subscriberFunction(activeSubscriber)
+        const cleanUp  = this._subscriberFunction(activeSubscriber)
 
         return {
             unsubscribe: () => {
                 if (activeSubscriber.complete) {
                     activeSubscriber.complete();
                 }
-
+                cleanUp && cleanUp()
                 this._subscribers.delete(subscriberId)
             }
         }
     }
 }
 
+///////ПРИМЕРЫ
 const myObservable = new MyObservable((subscriber) => {
     subscriber.next(3)
     setTimeout(() => {
@@ -59,10 +60,10 @@ const myObservable = new MyObservable((subscriber) => {
     }, 2000)
 })
 
-myObservable.subscribe((v) => console.log("obsMYYYY--:", v))
+myObservable.subscribe((v) => console.log("obsMY-0:", v))
 myObservable.subscribe({
     next: (v) => console.log("obsMy--1111", v),
-    complete: () => console.log("1111--Complete")
+    complete: () => console.log("obsMy--1111--Complete")
 })
 
 export {init, MyObservable};
