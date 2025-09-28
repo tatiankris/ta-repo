@@ -10,7 +10,6 @@ function myOf<T> (...args: T[]) {
     })
 }
 
-
 function myFrom<T> (args: T[]) {
     return new MyObservable((subscriber) => {
         for (const arg of args) {
@@ -34,14 +33,3 @@ fromMyObservable.subscribe({
 })
 
 export {init, myOf, myFrom};
-
-
-
-// function myOfWithAsync<T> (...args: [...values: T[], asyncScheduler: number]) {
-//     return new MyObservable((subscriber) => {
-//         for (const arg of args) {
-//             subscriber.next(arg)
-//         }
-//         subscriber.complete()
-//     })
-// }

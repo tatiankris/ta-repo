@@ -10,7 +10,6 @@ function myInterval<T> (delay: number) {
 
         return () => {
             clearInterval(idInterval)
-            i = 0
         }
     })
 }

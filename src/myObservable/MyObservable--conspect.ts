@@ -34,7 +34,7 @@
 
 
 
-///КОМПОНЕНТЫ ПОТОКА (ФОРМАЛЬНО)/
+///КОМПОНЕНТЫ ПОТОКА ()/
 //Producers - Производители
 // Consumers - Потребители
 // Data pipeline - Конвейер данных
@@ -63,9 +63,9 @@ import {fromEvent} from "rxjs";
 
 const link = document.querySelector('#google');
 
-const clickStream = fromEvent(link, 'click')
-    .map(event => event.currentTarget.getAttribute('href'))
-    .subscribe(console.log); /-> http://www.google.com
+// const clickStream = fromEvent(link, 'click')
+//     .map(event => event.currentTarget.getAttribute('href'))
+//     .subscribe(console.log); /-> http://www.google.com
 
 //////
 ///Observables - push-based collections
