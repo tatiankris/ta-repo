@@ -1,5 +1,5 @@
                                                   //of()
-import {of} from "rxjs";
+import {of, retry} from "rxjs";
 //of()
 //Создает Observable, который будет последовательно испускать поток значений, переданных в of() через запятую.
 //const source = of(1, 2, 3, 4, 5);
@@ -45,7 +45,7 @@ import { ajax } from 'rxjs/ajax';
 const githubUsers = `https://api.github.com/users?per_page=2`;
 //
 //Observable, который испускает ОБЪЕКТ ОТВЕТА на запрос. (с заголовками, статусами ответа и всей инфой)
-const users = ajax(githubUsers);
+const users = ajax(githubUsers).pipe(retry(2));
 //
 const subscribe = users.subscribe(
     res => console.log(res), ///res - это будет результат ответа на запрос
